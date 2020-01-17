@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import OktaAuth from '@okta/okta-auth-js';
+import { ConfigOKTA } from './.env.client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private authClient = new OktaAuth({
-    issuer: 'https://dev-322018.oktapreview.com/oauth2/default',
-    clientId: '0oaipoqa789EAewTL0h7'
+  private authClient = new OktaAuth({ ...ConfigOKTA
   });
 
   public isAuthenticated = new BehaviorSubject<boolean>(false);
